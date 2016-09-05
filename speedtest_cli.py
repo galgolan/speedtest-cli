@@ -377,7 +377,8 @@ def getConfig():
     """
 
     uh = requests.get('http://www.speedtest.net/speedtest-config.php', headers = {'user-agent':user_agent})
-    configxml = uh.text
+    configxml = []
+    configxml.append(uh.text.encode('utf-8'))
     
     if(int(uh.status_code) != 200):
         return None
